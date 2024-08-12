@@ -1,4 +1,4 @@
-version: '3.9' # kommentit, docker-versio
+version: '3.9' # kommentit, docker-versio. Start: docker compose up --build ja docker log in
 services:
   php-env:
     build:

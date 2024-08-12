@@ -1,5 +1,6 @@
 <?php
 include 'funcs.php';
+session_start();
 ?>
 <html lang="en">
 <head>
@@ -16,7 +17,9 @@ include 'funcs.php';
     </header>
     <main>
         <p>You can build modern user interfaces with the simplicity and power of hypertext</p>
-        <form hx-post="note.php">
+        <!-- <form hx-post="note.php" hx-select="ul" hx-target="ul" hx-swap="outerHTML">
+        </form> -->
+        <form hx-post="note.php" hx-target="ul" hx-swap="outerHTML">
             <label for="note">Your note</label>
             <input type="text" id="note" name="note">
             <button>Save Button</button>
