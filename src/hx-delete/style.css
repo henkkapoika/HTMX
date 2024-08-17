@@ -1,0 +1,43 @@
+body {
+    margin: 0;
+}
+
+header img {
+    width: 125px;
+    height: 75px;
+    box-shadow: 2px;
+}
+
+header {
+    display: flex;
+    gap: 2rem;
+    justify-content: space-around;
+    background-color: antiquewhite;
+}
+
+main {
+    padding: 2rem;
+    background-color: azure;    
+    min-height: 100vh;
+    font-size: larger;
+    font-style: italic;
+}
+
+main button {
+    color: white;
+    background-color: rgb(49, 49, 197);
+    padding: 3px;
+    cursor: pointer;
+}
+
+main form {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+main ul {
+    margin-left: 46rem;
+    list-style: none;
+}
