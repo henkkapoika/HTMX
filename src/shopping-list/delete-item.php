@@ -7,16 +7,17 @@ if($_SERVER["REQUEST_METHOD"] === 'DELETE') {
     //echo $queryParams['index']";
 
     // Vaihtoehto B
-    if(isset($_GET['index'])){
-        // POistetaan taulukosta tietty indeksi
-        $index = (int)$_GET['index'];
-        unset($_SESSION['items'][$index]);
+    if(isset($_GET['id'])){
+        // Poistetaan taulukosta tietty id
+        $id = $_GET['id'];
+        unset($_SESSION['items'][$id]);
     } else{
-        echo "ei ole indeksi";
+        echo "ei ole id";
     }
 } else {
     echo "ei ole DELETE-metodi";
 }
+
 
 
 ?>

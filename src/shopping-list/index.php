@@ -1,4 +1,7 @@
 <?php
+
+include "funcs.php";
+
 session_start();
 //session_destroy();
 
@@ -23,28 +26,21 @@ if(!isset($_SESSION['items'])){
     <main>
         <h1>Shopping List</h1>
         <section>
-            <form id="item-form" hx-post="functionality.php" hx-target="#items" hx-swap="beforeend">
+            <form id="item-form" hx-post="functionality.php" hx-target="#items" hx-swap="beforeend" 
+            hx-on::after-request="this.reset(); document.querySelector('input').focus();"
+            hx-disabled-elt="form button">
                 <div>
                     <label for="item">Item</label>
-                    <input type="text" id="item" name="item" />
+                    <input required type="text" id="item" name="item" />
                 </div>
                 <button type="submit">Add item</button>
             </form>
         </section>
         <section>
-            <ul id="items">
+            <ul id="items" hx-swap="outerHTML" hx-confirm="Are you sure?">
                  <?php
-                    foreach($_SESSION['items'] as $index => $item){
-                        echo 
-                        "<li id='item-$index'>
-                            <span>" . htmlspecialchars($item) . "</span>
-                            <button 
-                            hx-delete=\"delete-item.php?index=$index\"
-                            hx-target=\"#item-$index\"
-                            hx-swap=\"outerHTML\"
-                            >Remove</button>
-                        </li>
-                        ";
+                    foreach($_SESSION['items'] as $id => $item){
+                        echo listElement($id, $item);
                     }
                  ?>
             </ul>
