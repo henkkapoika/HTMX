@@ -92,3 +92,13 @@ button:disabled:hover {
     opacity: 0,6;
     cursor: not-allowed
 }
+
+#forms {
+    display: flex;
+    justify-content: space-between;
+}
+
+#clear-all {
+    margin-right: 1rem;
+    background-color: rgb(255, 72, 72);
+}
