@@ -1,0 +1,109 @@
+body {
+    margin: 0;
+    background-color: rgb(220, 220, 220);
+    min-height: 100vh;
+}
+
+main {
+    width: 85%;
+    max-width: 60rem;
+    background: linear-gradient(#b0fcb6, #d2fcd5);
+    margin: 0 auto 0 auto;
+    min-height: 100vh;
+    padding: 2rem;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+form{
+    display: flex;
+    gap: 1rem;
+    align-items: flex-end;
+    margin-bottom: 2rem;
+}
+
+form label {
+    display: block;
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+}
+
+form input {
+    border: none;
+    padding: 0.5rem 0.25rem;
+    width: 20rem;
+    border-radius: 4px;
+}
+
+form button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: rgb(172, 101, 239);
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form button:hover,
+form button:active {
+    background-color: rgb(119, 36, 197);
+}
+
+#items {
+    margin: 2rem 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#items li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem 0;
+    background-color: rgb(30, 29, 32);
+    color: rgb(217, 208, 234);
+    border-radius: 6px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+#items li span {
+    font-weight: bold;
+}
+
+#items li button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    background-color: rgb(219, 118, 159);
+    cursor: pointer;
+}
+
+#forms {
+    display: flex;
+    justify-content: space-between;
+}
+
+#items li button:hover,
+#items li button:active {
+    background-color:  rgb(196, 67, 119);
+}
+
+#items li button:hover,
+#items li button:active {
+    background-color: rgb(169, 70, 134);
+}
+
+
+#clear-all {
+    margin-right: 1rem;
+    background-color: rgb(255, 75, 75);
+}
+
+button:disabled,
+button:disabled:hover {
+    background-color: grey;
+    opacity: 0.6;
+    cursor: not-allowed;
+}
