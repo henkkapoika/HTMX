@@ -2,6 +2,7 @@
 include "data/images.php";
 include "components/image.php";
 session_start();
+//session_destroy();
 
 if(!isset($_SESSION['selected-images'])){
     $_SESSION['selected-images'] = [];
@@ -28,7 +29,7 @@ if(!isset($_SESSION['selected-images'])){
             <ul id="selected-images">
                 <?php
                     foreach($_SESSION['selected-images'] as $image){
-                        echo renderImage($image); // generoi li-elementin HTML-koodin
+                        echo renderImage($image, false); // generoi li-elementin HTML-koodin
                     }
                 ?>
             </ul>
@@ -37,10 +38,19 @@ if(!isset($_SESSION['selected-images'])){
         <section>
             <!-- Kaikki kuvat -->
             <h2>Available images</h2>
-            <ul>
+            <ul id="available-images">
                 <?php
                     // Käydään läpi /data/images.php tiedoston muuttujan $DATABASE_IMAGES-taulukko
-                    foreach($DATABASE_IMAGES as $image){
+
+                    $selected = $_SESSION['selected-images'];
+                    // Lisätään suodatus, joka ottaa pois kuvat jotka käyttäjä on jo valinnut
+                    $availableImages = array_filter($DATABASE_IMAGES, function($image) use ($selected){ // anonyymi-funktio
+                        // Tämä funktio on suodatin
+                        return !in_array($image, $selected);
+                        // tämän funktion pitää palauttaa joko TRUE tai FALSE
+                    }); // array_filter ei muokkaa alkuperäistä taulukkoa, vaan palauttaa uuden version
+
+                    foreach($availableImages as $image){
                         echo renderImage($image);
                     }
                 ?>

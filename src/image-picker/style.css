@@ -88,6 +88,10 @@ li img{
     height: 100%;
     object-fit: cover;
     border-radius: 0.5rem;
+    -webkit-user-drag: none; /* chrome, edge */
+    /*-moz-user-select: none; mozilla */
+    user-select: none;
+    pointer-events: auto;
 }
 
 li h3 {
@@ -96,6 +100,7 @@ li h3 {
     position: absolute;
     bottom: 0;
     right: 1rem;
+    margin: 1rem auto;
     background-color: #feee86;
     border-radius: 4px;
     padding: 0.15rem 0.35rem;
