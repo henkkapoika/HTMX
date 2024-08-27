@@ -15,6 +15,7 @@ if(!isset($_SESSION['selected-images'])){
     <title>Image Picker</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/htmx.org@2.0.1" integrity="sha384-QWGpdj554B4ETpJJC9z+ZHJcA/i59TyjxEPXiiUgN2WmTyV5OEZWCD6gQhgkdpB/" crossorigin="anonymous"></script>
+    <script src="main.js" defer></script>
 </head>
 <body>
     <header>
@@ -23,7 +24,7 @@ if(!isset($_SESSION['selected-images'])){
         <p>Pick a collection of photos from the selection</p>
     </header>
     <main>
-        <section>
+        <section id="selected-images-section">
             <!-- Käyttäjän valinnat -->
             <h2>Selected Images</h2>
             <ul id="selected-images">

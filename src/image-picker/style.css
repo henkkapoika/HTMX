@@ -69,6 +69,7 @@ ul {
 }
 
 li {
+    position: relative;
     display: flex;
     flex-direction: column;
     border-radius: 8px;
@@ -106,3 +107,121 @@ li h3 {
     padding: 0.15rem 0.35rem;
     box-shadow: 0 1px 4px black;
 }
+
+button img {
+    transition: all 0.3s ease-in-out;
+}
+
+li:nth-child(odd) button img:hover{
+    transform: rotate(5deg);
+}
+
+li:nth-child(even) button img:hover{
+    transform: rotate(-5deg);
+}
+
+li:hover {
+    box-shadow: 0 0 8px 5px rgba(251, 255, 0, 0.6);
+}
+
+/* Modal alkaa tästä */
+
+#confirmation {
+  padding: 1rem;
+}
+
+#confirmation h2 {
+    font-family: sans-serif;
+    font-size: 1.5rem;
+    margin: 0;
+    padding: 0;
+    color: #5d0909;
+}
+
+#confirmation p {
+    margin: 0;
+    font-size: 1.15rem;
+    max-width: 38rem;
+    color: #804242;
+}
+
+#confirmation-actions {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.modal button {
+    cursor: pointer;
+    font-family: sans-serif;
+    font-size: 1rem;
+    padding: 0.5rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #5d0909;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+    color: #fff;
+}
+
+.modal button:hover,
+.modal button:focus {
+  background-color: #3e0505;
+}
+
+.modal button#action-no {
+    background-color: transparent;
+    color: #5d0909;
+    border: none;
+    box-shadow: none;
+}
+
+.modal button#action-no:hover,
+.modal button#action-no:focus {
+  color: #3e0505;
+}
+
+.button-text {
+    background: transparent;
+    border: none;
+    padding: 0;
+    font-family: sans-serif;
+    font-size: 1rem;
+    color: #5d0909;
+}
+
+.modal {
+    min-width: 30rem;
+    padding: 0;
+    z-index: 2;
+    background: #d5c7bc;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    animation: slide-down-fade-in 0.3s ease-out forwards;
+}
+
+@keyframes slide-down-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(-3rem);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal::backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.modal .add {
+    background-color: green;
+}
+/* Modal loppuu tähän */
