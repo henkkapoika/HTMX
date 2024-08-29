@@ -1,0 +1,121 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: sans-serif;
+    line-height: 1.5;
+    color: white;
+    height: 100%;
+    min-height: 100rem;
+}
+
+body{
+    margin: 0;
+    padding: 2rem;
+    background: linear-gradient(180deg, #77a2ad, #83a8b1 100%);
+}
+
+header {
+    text-align: center;
+}
+
+header h1{
+    margin: 0;
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 1rem;
+}
+
+header img{
+    width: 9rem;
+    height: 9rem;
+    object-fit: contain;
+}
+
+header p {
+    margin: 0 auto;
+    font-size: 1.15rem;
+    max-width: 38ch;
+}
+
+section {
+    margin: 2rem auto;
+    padding: 1rem;
+    border: 2px solid #0d373e;
+    border-radius: 8px;
+}
+
+section h2{
+    font-size: 1.15rem;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+ul {
+    max-width: 80rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+    grid-gap: 2rem;
+    margin: 2rem auto;
+    padding: 0;
+    list-style: none;
+    
+}
+
+li {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    background: #1f1c2c;
+    height: 10rem;
+    overflow: hidden;
+}
+
+li button {
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+li img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    -webkit-user-drag: none;
+    user-select: none;
+    pointer-events: auto;
+}
+
+li h3 {
+    font-weight: normal;
+    font-size: 0.9rem;
+    position: absolute;
+    bottom: 0;
+    right: 1rem;
+    margin: 1rem auto;
+    background-color: #feee86;
+    border-radius: 4px;
+    padding: 0.15rem 0.35rem;
+    box-shadow: 0 1px 4px black;
+}
+
+button img {
+    transition: all 0.3s ease-in-out;
+}
+
+li:nth-child(odd) button img:hover{
+    transform: rotate(5deg);
+}
+
+li:nth-child(even) button img:hover{
+    transform: rotate(-5deg);
+}
+
+li:hover {
+    box-shadow: 0 0 8px 5px rgba(251, 255, 0, 0.6);
+}
