@@ -2,6 +2,7 @@
 session_start();
 include "data/images.php";
 include "components/image.php";
+include "funcs.php";
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     // Käyttäjän valitseman kuvan id
@@ -36,6 +37,14 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                     echo renderImage($image);
                 }
     echo "</ul>";
+
+    // päivitetään suggested images section
+    $suggestedImages = getSuggestedImages();
+    echo "<ul id=\"suggested-images\" hx-swap-oob=\"innerHTML\">";
+                foreach($suggestedImages as $image){
+                    echo renderImage($image);
+                }
+     echo  "</ul>";
 
 }
 
