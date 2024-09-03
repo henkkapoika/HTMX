@@ -50,3 +50,20 @@ function showConfirmationModal(event){
 }
 
 document.addEventListener("htmx:confirm", showConfirmationModal);
+
+document.getElementById('suggested-images').addEventListener('htmx:afterRequest', function(event){
+    //console.log(event);
+    if(event.detail.pathInfo.requestPath !== 'suggested-images.php'){
+        return;
+    } else {
+
+    }
+    
+    // resetoidaan palkin animaatio
+    const loadingDiv = document.getElementById('loading');
+
+    loadingDiv.style.animation = 'none';
+    loadingDiv.offsetHeight; // aktivoi selaimessa CSS reflow:n
+    loadingDiv.animation = null; // palauttaa oletus arvon elementille
+});
+    
