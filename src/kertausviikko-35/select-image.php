@@ -2,6 +2,7 @@
 session_start();
 include "data/images.php";
 include "components/image.php";
+include 'funcs.php';
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $imageId = $_POST['imageId'];
@@ -31,6 +32,14 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                     echo renderImage($image);
                 }
     echo "</ul>";
+
+    $recommendedImages = recommendedImages();
+    echo "<ul id=\"recommended-images\" hx-swap-oob=\"innerHTML\">";
+                foreach($recommendedImages as $image){
+                    echo renderImage($image);
+                }
+     echo  "</ul>";
+    
 
 }
 if($_SERVER["REQUEST_METHOD"] === 'DELETE'){

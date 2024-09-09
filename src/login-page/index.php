@@ -1,3 +1,9 @@
+<?php
+
+session_start();
+//session_destroy();
+
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -5,12 +11,15 @@
     <title>Login</title>
     <script src="https://unpkg.com/htmx.org@2.0.1" integrity="sha384-QWGpdj554B4ETpJJC9z+ZHJcA/i59TyjxEPXiiUgN2WmTyV5OEZWCD6gQhgkdpB/" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/htmx.org@1.9.12/dist/ext/response-targets.js"></script>
 </head>
 <body>
     <main>
         <form hx-post="login.php"
+        hx-ext="response-targets"
         hx-headers='{"x-csrf-token": "43h534h53489fh34"}'
-        hx-target="#extra-information"
+        hx-target-4*="#extra-information"
+        hx-target-5*=".control"
         hx-sync="this:replace"
         >
             <img src="images/lock.jpg" alt="picture of pixel art padlock" hx-headers='{"x-csrf-token": "43h534h53489fh34"}'>

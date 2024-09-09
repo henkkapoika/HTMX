@@ -64,6 +64,7 @@ document.getElementById('suggested-images').addEventListener('htmx:afterRequest'
 
     loadingDiv.style.animation = 'none';
     loadingDiv.offsetHeight; // aktivoi selaimessa CSS reflow:n
-    loadingDiv.animation = null; // palauttaa oletus arvon elementille
+    loadingDiv.style.animation = null; // palauttaa oletus arvon elementille
+
 });
     

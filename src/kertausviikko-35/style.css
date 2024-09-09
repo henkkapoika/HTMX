@@ -119,3 +119,25 @@ li:nth-child(even) button img:hover{
 li:hover {
     box-shadow: 0 0 8px 5px rgba(251, 255, 0, 0.6);
 }
+
+@keyframes timer {
+    from {
+        width: 0%;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+#loading {
+    background-color: #1f1c2c;
+    width: 0%;
+    height: 0.4rem;
+    animation: timer 5s linear forwards;
+}
+
+#recommended-images-section {
+    border: none;
+    margin: 2rem auto;
+    max-width: 40rem;
+}
