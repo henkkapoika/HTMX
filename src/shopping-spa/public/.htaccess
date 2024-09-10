@@ -1,0 +1,15 @@
+# Tänne voi lisätä asetuksia palvelimelle
+# Tässä muokataan requestit muodosta public/?page=product&id=p3 muotoon public/product/p3
+
+RewriteEngine on
+RewriteBase /shopping-spa/public/
+
+# Product sivu
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^product/([a-zA-Z0-9]+)$ index.php?page=product&id=$1 [L]
+ 
+# Muut sivut
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([a-zA-Z0-9-]+)/?$ index.php?page=$1 [L,QSA]
