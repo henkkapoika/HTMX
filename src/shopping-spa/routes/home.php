@@ -2,6 +2,13 @@
 $title = "Jacket Shop";
 include "../templates/header.php";
 
+require_once '../data/db-conn.php';
+
+$stmt = $conn->prepare("SELECT * FROM product");
+$stmt->execute();
+$PRODUCTS = $stmt->get_result();
+$stmt->close();
+
 ?>
 
 <main id="shop">

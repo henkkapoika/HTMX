@@ -1,6 +1,7 @@
 <?php
 
-require_once "../data/products.php";
+//require_once "../data/products.php";
+require_once "../data/db-conn.php";
 
 // Yksinkertainen routing
 // shopping-spa?page=product&id=p3 => /shopping-spa/product/p3
