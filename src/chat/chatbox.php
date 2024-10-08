@@ -1,5 +1,4 @@
 <?php
-
 // Viittaus funktiohin
 include "templates/chat-bubbles.php";
 include "db_connection.php";
@@ -8,6 +7,7 @@ include "db_connection.php";
 // Nämä viittaa tietokannan Id sarakkeeseen
 $_SESSION["user_id"] = 1;
 $_SESSION["chat_id"] = 1;
+$_SESSION["latest_id"] = 0;
 
 // Jostakin syystä tarvitaan id erillisessä muuttujassa
 // $_SESSION ei toiminut
@@ -27,6 +27,16 @@ $query = '
     WHERE m.chat_id = ?
     ORDER BY m.message_id ASC
 ';
+
+// $query2 = '
+//     SELECT
+//         chat_name
+//     FROM chats
+// ';
+
+// $stmt2 = $mysqli->prepare($query2);
+// $stmt2->execute();
+// $result2 = $stmt2->get_result();
 
 $stmt = $mysqli->prepare($query);
 $stmt->bind_param("i", $chat_id);
@@ -54,17 +64,18 @@ $mysqli->close();
         <h2>Chat</h2>
         <div class="buttons">
             <button><img src="" alt="_"></button>
-            <button onclick="closeChatbox()"><img src="" alt="X"></button>
+            <button onclick="toggleChatbox()"><img src="" alt="X"></button>
         </div>
     </header>
     <main>
         <!-- Generoidaan tietokannasta viestit HTML-muotoon -->
         <?php foreach($messages as $message): ?>
             <?php
+                $_SESSION["latest_id"] = $message["message_id"];
                 // Käyttäjän omat viestit
                 if($message['user_id'] === $user_id){
-                    generateSentMessage($message['username'], $message['content'],
-                     $message['parent_message_id'], $message['sent_at']);
+                    generateSentMessage($message['content'], $message['sent_at'],
+                     $message['username'], $message['parent_message_id']);
                 }else{
                     // Muiden viestit
                     generateReceivedMessage($message['username'], $message['content'],
@@ -72,11 +83,22 @@ $mysqli->close();
                 }
             ?>
         <?php endforeach; ?>
+
+            <!-- sse-connect="stream.php" -->
+        <div hx-ext="sse" sse-connect="http://localhost:3001/stream" sse-swap="message" hx-swap="beforeend">
+            <!-- Tänne tulevat kaikkien muiden uudet viestit -->
+        </div>
+            <!-- Käyttäjän omat viestit -->
         <div class="reply-message-goes-here"></div>
     </main>
     <footer>
         <div>
-            <form>
+            <form 
+                hx-post="send-message.php"
+                hx-swap="beforebegin show:.reply-message-goes-here:top"
+                hx-target=".reply-message-goes-here"
+                hx-on::after-request="this.reset(); document.querySelector('input').focus();"
+            >
                 <textarea name="chat-input" required></textarea>
                 <button>
                     <div id="svg-wrapper">
